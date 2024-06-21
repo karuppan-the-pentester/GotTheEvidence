@@ -13,7 +13,7 @@ WORKDIR /var/www/html/
 RUN rm index.html
 RUN service apache2 start
 COPY Code /var/www/html/
-COPY gottheevidence.sql /var/www/html/
+COPY DB/DB.sql /var/www/html/
 
 EXPOSE 80
 
