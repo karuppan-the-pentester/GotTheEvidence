@@ -1,0 +1,24 @@
+version: "1"
+services:
+  Code:
+    image: ctf
+    build: './CTF/'
+    depends_on:
+      - mysql
+    ports:
+      - "8080:80"
+
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./public/dump:/docker-entrypoint-initdb.d/
+    environment:
+      MYSQL_ROOT_PASSWORD: "passwd"
+      MYSQL_DATABASE: "gottheevidence"
+      MYSQL_USER: "ctf"
+      MYSQL_PASSWORD: "passwd"
+
+

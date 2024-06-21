@@ -1,0 +1,6 @@
+#build Command
+docker build -t gte .
+
+#run Command
+docker run -d -p 8080:80 22:22 --name GotTheEvidence gte
+
