@@ -41,8 +41,8 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`id`, `mail`, `password`, `secret_key`, `role`, `name`) VALUES
-(1, 'karuppasamy@umbrella.com', 'karuppasamy', 'umbrellafire', 'support_engineer', 'Karuppasamy Karuppiah'),
-(2, 'admin@umbrella.com', 'umb', 'Lavade', 'admin', 'Karthik Raja');
+(1, 'jony@umbrella.com', 'jsins', 'nullvoid', 'support_engineer', 'Johny Sins'),
+(2, 'davidgrey@umbrella.com', 'dgrey', 'NullSpace', 'admin', 'David Grey');
 
 --
 -- Indexes for dumped tables
