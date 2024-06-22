@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect('localhost', 'ctf', 'passwd', 'gottheevidence');
+$connection = mysqli_connect('db', 'root', 'password', 'gottheevidence');
 if (!$connection) {
-    echo "Connection Error";
+    die("Connection Error: " . mysqli_connect_error());
 }

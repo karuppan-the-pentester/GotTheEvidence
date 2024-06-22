@@ -17,29 +17,35 @@
 
     include '../database.php';
     session_start();
-    
-    if (isset($_POST['mail'])) {
-        $email = $_POST['mail'];
-        $password = $_POST['password'];
+    $mail = $_SESSION['mail'];
 
-        $select_user_query = "SELECT * FROM user_details WHERE mail= '$email' AND password= '$password';";
+    if($mail == NULL){
+        header('location: ./');
+    }
+    if (isset($_POST['key'])) {
+        
+        $password = $_POST['key'];
+
+        $select_user_query = "SELECT * FROM `user_details` WHERE mail='$mail' and secret_key='$password'; ";
+        echo "$select_user_query";
         $select_user_result = mysqli_query($connection, $select_user_query);
 
         if ($row = mysqli_fetch_assoc($select_user_result)) {
             $db_id = $row['id'];
             $db_role = $row['role'];
+            $db_name = $row['name'];
 
+            
             $_SESSION['IsLogin'] = "Yes";
             if ($db_role == 'admin') {
-                $_SESSION['mail']=$row['mail'];
-                header('location: ./LoginCheck.php');
+                $_SESSION['userid'] = $db_id;
+                header('location: ../admin/');
                 
             } else {
                 header('location: ../');
-                $_SESSION['userid'] = $db_id;
             }
         } else {
-            header('location: ./');
+            header('location: ./LoginCheck.php');
         }
 
         
@@ -50,15 +56,11 @@
     <div class="container">
         <div class="forms">
             <div class="form login">
-                <span class="title">Login</span>
+                <span class="title">Admin Check</span>
 
-                <form action="./index.php" method="post">
+                <form action="./LoginCheck.php" method="post">
                     <div class="input-field">
-                        <input type="text" name="mail" placeholder="Enter your email" required>
-                        <i class="uil uil-envelope icon"></i>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" name="password" class="password" placeholder="Enter your password" required>
+                        <input type="password" name="key" class="password" placeholder="Enter your Secret Key" required>
                         <i class="uil uil-lock icon"></i>
                         <i class="uil uil-eye-slash showHidePw"></i>
                     </div>
