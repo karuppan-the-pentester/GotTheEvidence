@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 12:17 PM
+-- Generation Time: Jun 22, 2024 at 05:32 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -39,7 +39,29 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `comments_title`, `comments`) VALUES
 (1, 'Mia ', 'Nice Vro'),
-(2, 'Saravan', 'Nee kalaku chitappa');
+(2, 'Saravan', 'Nee kalaku chitappa'),
+(8, 'Unnai Pol Oruvan', 'AdminCheck: "Lavade"');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery_db`
+--
+
+CREATE TABLE `gallery_db` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `image_name` text NOT NULL,
+  `image_path` text NOT NULL,
+  `uploaded_at` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gallery_db`
+--
+
+INSERT INTO `gallery_db` (`id`, `user_id`, `image_name`, `image_path`, `uploaded_at`) VALUES
+(1, 1, 'The_Umbrella_Corporation_Logo.jpg', 'uploads/The_Umbrella_Corporation_Logo.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -61,8 +83,8 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`id`, `mail`, `password`, `secret_key`, `role`, `name`) VALUES
-(1, 'karuppasamy@umbrella.com', 'karuppasamy', 'umbrellafire', 'support_engineer', 'Karuppasamy Karuppiah'),
-(2, 'admin@umbrella.com', 'umb', 'Lavade', 'admin', 'Karthik Raja');
+(1, 'jony@umbrella.com', 'Johny', 'umbrellafire', 'support_engineer', 'Johny Sins'),
+(2, 'davidgrey@umbrella.com', 'umb', 'Lavade', 'admin', 'David Grey');
 
 --
 -- Indexes for dumped tables
@@ -72,6 +94,12 @@ INSERT INTO `user_details` (`id`, `mail`, `password`, `secret_key`, `role`, `nam
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gallery_db`
+--
+ALTER TABLE `gallery_db`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -88,7 +116,13 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `gallery_db`
+--
+ALTER TABLE `gallery_db`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_details`

@@ -18,7 +18,7 @@ There is no details were exposed.
 <br><input type="checkbox" checked> Directory Traversal
 <br><input type="checkbox" checked> Sensitive Data Exposure
 <br><input type="checkbox" checked> Stored XSS
-<br><input type="checkbox"> File Upload
+<br><input type="checkbox" checked> File Upload
 <br><input type="checkbox"> Remote Code Execution
 <br><input type="checkbox"> Privelege Escalation
 

