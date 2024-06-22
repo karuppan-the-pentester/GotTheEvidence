@@ -14,14 +14,15 @@ There is no details were exposed.
 
 ## Vulnerabilities
 
-- [ x ] Sql Injection
-- [ x ] Directory Traversal
-- [ x ] Sensitive Data Exposure
-- [  ] Stored XSS
-- [  ] CSRF
-- [  ] File Upload
-- [  ] Remote Code Execution
-- [  ] Privelege Escalation
+<br><input type="checkbox" checked> Sql Injection
+<br><input type="checkbox" checked> Directory Traversal
+<br><input type="checkbox" checked> Sensitive Data Exposure
+<br><input type="checkbox" checked> Stored XSS
+<br><input type="checkbox"> CSRF
+<br><input type="checkbox"> File Upload
+<br><input type="checkbox"> Remote Code Execution
+<br><input type="checkbox"> Privelege Escalation
+
 
 ## Write-Up
 

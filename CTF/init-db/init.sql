@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2024 at 08:22 AM
+-- Generation Time: Jun 22, 2024 at 12:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `gottheevidence`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL,
+  `comments_title` text NOT NULL,
+  `comments` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `comments_title`, `comments`) VALUES
+(1, 'Mia ', 'Nice Vro'),
+(2, 'Saravan', 'Nee kalaku chitappa');
 
 -- --------------------------------------------------------
 
@@ -41,12 +61,18 @@ CREATE TABLE `user_details` (
 --
 
 INSERT INTO `user_details` (`id`, `mail`, `password`, `secret_key`, `role`, `name`) VALUES
-(1, 'jony@umbrella.com', 'jsins', 'nullvoid', 'support_engineer', 'Johny Sins'),
-(2, 'davidgrey@umbrella.com', 'dgrey', 'NullSpace', 'admin', 'David Grey');
+(1, 'karuppasamy@umbrella.com', 'karuppasamy', 'umbrellafire', 'support_engineer', 'Karuppasamy Karuppiah'),
+(2, 'admin@umbrella.com', 'umb', 'Lavade', 'admin', 'Karthik Raja');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_details`
@@ -57,6 +83,12 @@ ALTER TABLE `user_details`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_details`

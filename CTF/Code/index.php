@@ -1,22 +1,22 @@
-<?php 
+<?php
 
 session_start();
 include './database.php';
-$user_id=$_SESSION['userid'];
-  if ($user_id==NULL) {
-    header("Location: ./login/");
-  }
-  $select_data_query = "SELECT * FROM `user_details` WHERE id=" . $user_id;
-  $select_data_result = mysqli_query($connection, $select_data_query);
-  while ($userrow = mysqli_fetch_assoc($select_data_result)) {
-    $name = $userrow["name"];
-    $mail = $userrow["mail"];
-    $role = $userrow["role"];
-  }
+$user_id = $_SESSION['userid'];
+if ($user_id == NULL) {
+  header("Location: ./login/");
+}
+$select_data_query = "SELECT * FROM `user_details` WHERE id=" . $user_id;
+$select_data_result = mysqli_query($connection, $select_data_query);
+while ($userrow = mysqli_fetch_assoc($select_data_result)) {
+  $name = $userrow["name"];
+  $mail = $userrow["mail"];
+  $role = $userrow["role"];
+}
 
-  if($role=="admin"){
-    header("Location: ./admin");
-  }
+if ($role == "admin") {
+  header("Location: ./admin");
+}
 
 
 ?>
@@ -50,11 +50,11 @@ $user_id=$_SESSION['userid'];
 <body class="sidebar-icon-only" style="background-color: #F4F5F7;">
   <!-- partial:partials/_navbar.html -->
   <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
-    
+
     <div class="navbar-menu-wrapper d-flex align-items-top">
       <ul class="navbar-nav">
         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-          <h1 class="welcome-text">Welcome, <span class="text-black fw-bold"><?php echo $name;?></span></h1>
+          <h1 class="welcome-text">Welcome, <span class="text-black fw-bold"><?php echo $name; ?></span></h1>
           <h3 class="welcome-sub-text">Tech Support Engineer</h3>
         </li>
       </ul>
@@ -100,7 +100,7 @@ $user_id=$_SESSION['userid'];
                 <p class="fw-light small-text mb-0"> Private message </p>
               </div>
             </a>
-            
+
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -131,7 +131,7 @@ $user_id=$_SESSION['userid'];
                 <p class="fw-light small-text mb-0"> Admin Login Working! </p>
               </div>
             </a>
-            
+
           </div>
         </li>
         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -140,8 +140,8 @@ $user_id=$_SESSION['userid'];
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
             <div class="dropdown-header text-center">
               <img class="img-md rounded-circle" src="./static/images/faces/face8.jpg" alt="Profile image">
-              <p class="mb-1 mt-3 font-weight-semibold"><?php echo $name;?></p>
-              <p class="fw-light text-muted mb-0"><?php echo $mail;?></p>
+              <p class="mb-1 mt-3 font-weight-semibold"><?php echo $name; ?></p>
+              <p class="fw-light text-muted mb-0"><?php echo $mail; ?></p>
             </div>
             <!-- <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
             <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
@@ -168,12 +168,12 @@ $user_id=$_SESSION['userid'];
                 <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
                   <div class="row">
                     <div class="col-sm-12">
-                      
+
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-8 d-flex flex-column">
-                    <div class="row flex-grow">
+                      <div class="row flex-grow">
                         <div class="col-12 grid-margin stretch-card">
                           <div class="card card-rounded">
                             <div class="card-body">
@@ -342,7 +342,7 @@ $user_id=$_SESSION['userid'];
                                         <div class="badge badge-opacity-warning">Working</div>
                                       </td>
                                     </tr>
-                                    
+
                                   </tbody>
                                 </table>
                               </div>
@@ -352,112 +352,112 @@ $user_id=$_SESSION['userid'];
                       </div>
                     </div>
                     <div class="col-lg-4 d-flex flex-column">
-                      
-                        <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                          <div class="card bg-primary card-rounded">
-                            <div class="card-body pb-0">
-                              <h4 class="card-title card-title-dash text-white mb-4">Status Summary</h4>
-                              <div class="row">
-                                <div class="col-sm-4">
-                                  <p class="status-summary-ight-white mb-1">Closed Value</p>
-                                  <h2 class="text-info">357</h2>
-                                </div>
-                                <div class="col-sm-8">
-                                  <div class="status-summary-chart-wrapper pb-4">
-                                    <canvas id="status-summary"></canvas>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                          <div class="card card-rounded">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-sm-6">
-                                  <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                    <div class="circle-progress-width">
-                                      <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
-                                    </div>
-                                    <div>
-                                      <p class="text-small mb-2">Total Request</p>
-                                      <h4 class="mb-0 fw-bold">26.80%</h4>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <div class="circle-progress-width">
-                                      <div id="visitperday" class="progressbar-js-circle pr-2"></div>
-                                    </div>
-                                    <div>
-                                      <p class="text-small mb-2">Requests per day</p>
-                                      <h4 class="mb-0 fw-bold">65</h4>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
 
-                        <div class="col-12 grid-margin stretch-card">
-                          <div class="card card-rounded">
-                            <div class="card-body">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="card-title card-title-dash">Todo list</h4>
-                                    <div class="add-items d-flex mb-0">
-                                      <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
-                                      <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button>
-                                    </div>
+                      <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                        <div class="card bg-primary card-rounded">
+                          <div class="card-body pb-0">
+                            <h4 class="card-title card-title-dash text-white mb-4">Status Summary</h4>
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <p class="status-summary-ight-white mb-1">Closed Value</p>
+                                <h2 class="text-info">357</h2>
+                              </div>
+                              <div class="col-sm-8">
+                                <div class="status-summary-chart-wrapper pb-4">
+                                  <canvas id="status-summary"></canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-12 grid-margin stretch-card">
+                        <div class="card card-rounded">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
+                                  <div class="circle-progress-width">
+                                    <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
                                   </div>
-                                  <div class="list-wrapper">
-                                    <ul class="todo-list todo-list-rounded">
-                                    <li class="d-block completed">
-                                        <div class="form-check w-100">
-                                          <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox" checked="checked"> Send the Umbrella Sensitive data to David Grey <i class="input-helper rounded"></i>
-                                          </label>
-                                          <div class="d-flex mt-2">
-                                            <div class="ps-4 text-small me-3">22 June 2024</div>
-                                            <div class="badge badge-opacity-success me-3">Done</div>
-                                          </div>
-                                        </div>
-                                      </li>
-                                      <li class="d-block">
-                                        <div class="form-check w-100">
-                                          <label class="form-check-label">
-                                            <input class="checkbox" type="checkbox"> Check Blog (Admin Order) <i class="input-helper rounded"></i>
-                                          </label>
-                                          <div class="d-flex mt-2">
-                                            <div class="ps-4 text-small me-3">Daily</div>
-                                            <div class="badge badge-opacity-warning me-3">Today</div>
-                                            <i class="mdi mdi-flag ms-2 flag-color"></i>
-                                          </div>
-                                        </div>
-                                      </li>
-                                      
-                                      
-                                    </ul>
+                                  <div>
+                                    <p class="text-small mb-2">Total Request</p>
+                                    <h4 class="mb-0 fw-bold">26.80%</h4>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-6">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <div class="circle-progress-width">
+                                    <div id="visitperday" class="progressbar-js-circle pr-2"></div>
+                                  </div>
+                                  <div>
+                                    <p class="text-small mb-2">Requests per day</p>
+                                    <h4 class="mb-0 fw-bold">65</h4>
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                      
+                      </div>
+
+                      <div class="col-12 grid-margin stretch-card">
+                        <div class="card card-rounded">
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-lg-12">
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <h4 class="card-title card-title-dash">Todo list</h4>
+                                  <div class="add-items d-flex mb-0">
+                                    <!-- <input type="text" class="form-control todo-list-input" placeholder="What do you need to do today?"> -->
+                                    <button class="add btn btn-icons btn-rounded btn-primary todo-list-add-btn text-white me-0 pl-12p"><i class="mdi mdi-plus"></i></button>
+                                  </div>
+                                </div>
+                                <div class="list-wrapper">
+                                  <ul class="todo-list todo-list-rounded">
+                                    <li class="d-block completed">
+                                      <div class="form-check w-100">
+                                        <label class="form-check-label">
+                                          <input class="checkbox" type="checkbox" checked="checked"> Send the Umbrella Sensitive data to David Grey <i class="input-helper rounded"></i>
+                                        </label>
+                                        <div class="d-flex mt-2">
+                                          <div class="ps-4 text-small me-3">22 June 2024</div>
+                                          <div class="badge badge-opacity-success me-3">Done</div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="d-block">
+                                      <div class="form-check w-100">
+                                        <label class="form-check-label">
+                                          <input class="checkbox" type="checkbox"> Check Blog (Admin Order) <i class="input-helper rounded"></i>
+                                        </label>
+                                        <div class="d-flex mt-2">
+                                          <div class="ps-4 text-small me-3">Daily</div>
+                                          <div class="badge badge-opacity-warning me-3">Today</div>
+                                          <i class="mdi mdi-flag ms-2 flag-color"></i>
+                                        </div>
+                                      </div>
+                                    </li>
+
+
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-lg-8 d-flex flex-column">
-                      
+
                     </div>
                     <div class="col-lg-4 d-flex flex-column">
                       <div class="row flex-grow">
-                        
+
                       </div>
                     </div>
                   </div>
