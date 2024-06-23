@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
         
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
             
-            $sql = "INSERT INTO gallery_db (user_id, image_name, image_path) VALUES ('$user_id', '$image_name', '$target_file')";
+            $sql = "INSERT INTO gallery_db (user_id, image_name, image_path, uploaded_at) VALUES ('$user_id', '$image_name', '$target_file', 'now')";
             if ($connection->query($sql) === TRUE) {
                 echo "File uploaded successfully.";
             } else {
