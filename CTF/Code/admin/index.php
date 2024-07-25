@@ -221,6 +221,18 @@ if ($role != "admin") {
                                           </div>
                                         </div>
                                       </li>
+                                      <li class="d-block">
+                                        <div class="form-check w-100">
+                                          <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox"> You Found the Flag Kid! <i class="input-helper rounded"></i>
+                                          </label>
+                                          <div class="d-flex mt-2">
+                                            <div class="ps-4 text-small me-3">flag{Got_The_Evidence_MasterDoor}</div>
+                                            <div class="badge badge-opacity-warning me-3">Today</div>
+                                            <i class="mdi mdi-flag ms-2 flag-color"></i>
+                                          </div>
+                                        </div>
+                                      </li>
 
 
                                     </ul>

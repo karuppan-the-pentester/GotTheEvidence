@@ -3,7 +3,7 @@ import time
 
 def simulate_admin_login():
     # Base URL
-    base_url = 'http://172.22.0.3/'
+    base_url = 'http://localhost/MyPrjcts/GotTheEvidence/CTF/Code/login/'
 
     # Headers
     headers = {
@@ -12,8 +12,8 @@ def simulate_admin_login():
         'Accept-Language': 'en-US,en;q=0.5',
         'Accept-Encoding': 'gzip, deflate, br',
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Origin': 'http://172.22.0.3',
-        'Connection': 'close',
+        'Origin': 'http://localhost',
+        'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
         'Sec-Fetch-Dest': 'document',
         'Sec-Fetch-Mode': 'navigate',
@@ -39,22 +39,21 @@ def simulate_admin_login():
         'key': 'Lavade',
         'SignIn': 'Login Now'
     }
+    
     response = session.post(base_url + 'LoginCheck.php', headers=headers, data=auth_data)
     print('Second authentication response:', response.status_code)
 
     # Request to access the blog post page
-    blog_url = 'http://172.22.0.3/post.php'
+    blog_url = 'http://localhost/MyPrjcts/GotTheEvidence/CTF/Code/blog/post.php'
     response = session.get(blog_url, headers=headers)
     print('Blog post page response:', response.status_code)
 
-    # Send the cookies to the logging server
-    cookies = session.cookies.get_dict()
-    cookie_str = '; '.join([f'{name}={value}' for name, value in cookies.items()])
-    log_url = f'http://172.22.0.1:5000/log?cookie={cookie_str}'
-    log_response = requests.get(log_url)
-    print('Log response:', log_response.status_code)
+    if response.status_code == 200:
+        # Check if cookies are being sent
+        print('Cookies:', session.cookies.get_dict())
 
 if __name__ == "__main__":
     while True:
         simulate_admin_login()
         time.sleep(5)
+        print('\n')

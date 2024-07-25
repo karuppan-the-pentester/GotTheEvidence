@@ -1,16 +1,18 @@
 #! /bin/bash
 
 service mysql start
+
+echo "ssh Started....."
+service ssh start
+
+echo "Apachec2 Started....."
 apachectl -D FOREGROUND
 
-echo "got_the_evidence{Evidence_found_bhaiya}" > flag.txt
+echo "Changing File Modes"
+chmod 777 /var/www/html/admin/gallery/
+chmod 777 /var/www/html/admin/gallery/*
+chmod 777 /var/www/html/admin/gallery/uploads/
+chmod 777 /var/www/html/admin/gallery/uploads/*
 
-echo "Setting password for: root" 
-echo "root:12345678" | chpasswd
-
-echo "Password changed"
-
-pip install requests
-python /var/www/html/AdminSimulation.py &
-
+exec /bin/bash
 

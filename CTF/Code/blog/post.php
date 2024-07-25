@@ -220,7 +220,9 @@ if ($user_id == NULL) {
 <!-- End Comments -->
 
 
-	
+<script>
+	console.log(document.cookie);
+</script>
 
 	
 

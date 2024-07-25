@@ -7,14 +7,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
     $image_name = basename($_FILES["image"]["name"]);
     $target_file = $target_dir . $image_name;
 
-    
+    // echo $image_name;
+    // echo $target_file;
+
+    // Check if file already exists
     if (file_exists($target_file)) {
         echo "Sorry, file already exists.";
     } else {
-        
+        // Move uploaded file to target directory
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            
-            $sql = "INSERT INTO gallery_db (user_id, image_name, image_path, uploaded_at) VALUES ('$user_id', '$image_name', '$target_file', 'now')";
+            // Insert file information into the database
+            $sql = "INSERT INTO gallery_db (user_id, image_name, image_path, uploaded_at) VALUES ('$user_id', '$image_name', '$target_file', NOW())";
             if ($connection->query($sql) === TRUE) {
                 echo "File uploaded successfully.";
             } else {
@@ -25,6 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
         }
     }
 }
+$connection->close();
 ?>
 
 <!DOCTYPE html>
@@ -34,9 +38,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["image"])) {
 </head>
 <body>
     <h2>Upload Image</h2>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+    <form action="#" method="post" enctype="multipart/form-data">
         Select image to upload:
-        <input type="file" name="image" id="image">
+        <input type="file" name="image" id="image" accept="image/*">
         <input type="submit" value="Upload Image" name="submit">
     </form>
 </body>
