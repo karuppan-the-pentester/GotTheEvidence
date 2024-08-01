@@ -11,6 +11,15 @@ There is no details were exposed.
 
 <br>
 
+## Challenges
+
+<br> Entry Gate
+<br> Pathfinder's Secret Passage
+<br> Shadow Have Codes
+<br> Remote Command Mastery
+<br> Kingmaker's Ascendancy 
+
+
 
 ## Vulnerabilities
 
