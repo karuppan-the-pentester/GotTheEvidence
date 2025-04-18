@@ -43,7 +43,7 @@ RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 
 RUN mkdir /davidgrey
 RUN echo "got_the_evidence{Evidence_found_bhaiya}" > /davidgrey/flag.txt
-RUN chmod 700 /davidgrey/flag.txt
+RUN chmod 777 /davidgrey/flag.txt
 # Create the privileged script
 RUN echo '#!/bin/bash\ncat /etc/passwd' > /bin/usrchck && \
     chmod 4755 /bin/usrchck
