@@ -41,6 +41,7 @@ RUN mkdir /home/davidgrey/.ssh/
 COPY ./authorized_keys /home/davidgrey/.ssh/
 RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 
+RUN mkdir /davidgrey
 RUN echo "got_the_evidence{Evidence_found_bhaiya}" > /davidgrey/flag.txt
 RUN chmod 700 /davidgrey/flag.txt
 # Create the privileged script
