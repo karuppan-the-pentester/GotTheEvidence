@@ -41,40 +41,6 @@ docker compose up
 ```
 
 
-## Write-Up
-
-### 1] First We see the Login Only <br>
-![Check the desc](./Docs/Screenshot%20(71).png)
-### 2] View Page source leads some info about developer<br>
-![Check the desc](./Docs/Screenshot%20(72).png)
-### 3] use sqli paylod<br>
-![Check the desc](./Docs/Screenshot%20(73).png)
-### 4] The data from the user login<br>
-![Check the desc](./Docs/Screenshot%20(74).png)
-### 5] check the trash<br>
-![Check the desc](./Docs/Screenshot%20(76).png)
-### 6] download sql<br>
-### 7] Decrypt the hash using hashcat using their rockyou.txt<br>
-### 8] Use those credential for login as admin<br>
-### 9] password might changed so bypass login by sqli and use password from the hash for the adminCheck 
-```
-' OR '1'='1' -- -
-```
-
-```
-' OR id=(SELECT id FROM (SELECT id FROM user_details ORDER BY id LIMIT 1 OFFSET 1) AS t) -- -
-```
-( i really planned a different thing , i planned to use the stored xss and create a admin login simulation for being victimized in the XSS attack. But due to some docker network issue , i changed the plan)<br>
-### 10] login to admin account<br>
-![Check the desc](./Docs/Screenshot%20(84).png)
-### 11] see the gallery<br>
-![Check the desc](./Docs/Screenshot%20(85).png)
-### 12] upload option supports all data<br>
-![Check the desc](./Docs/Screenshot%20(86).png)
-### 13] upload the rce file and the flag is in the user directory directory<br>
-### 14] I'm using powny shell for RCE and i escalated the privelege using the authorised SSH Login<br>
-![Check the desc](./Docs/Screenshot%20(88).png)
-
 # ThankYou
 Thanks for the oppurtunity 
 after a long time i worked this much
